@@ -73,7 +73,8 @@ namespace Resource
                 {
                     return false;
                 }
-                break;
+                //break;
+			return false;
             }
             // not bothering with checks for other compression formats right now, we are unlikely to ever use those anyway
             default:
@@ -148,7 +149,8 @@ namespace Resource
             image->setFileName(normalized);
             if (!checkSupported(image, filename))
             {
-                static bool uncompress = (getenv("OPENMW_DECOMPRESS_TEXTURES") != nullptr);
+                static bool uncompress = true;
+				//static bool uncompress = (getenv("OPENMW_DECOMPRESS_TEXTURES") != nullptr);
                 if (!uncompress)
                 {
                     Log(Debug::Error) << "Error loading " << filename << ": no S3TC texture compression support installed";
